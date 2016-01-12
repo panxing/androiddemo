@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="main"><source path="D:\workspace\AndroidDemo1\app\src\androidTest\res"/><source path="D:\workspace\AndroidDemo1\app\build\generated\res\rs\androidTest\umeng\debug"/><source path="D:\workspace\AndroidDemo1\app\build\generated\res\resValues\androidTest\umeng\debug"/></dataSet><dataSet config="androidTestUmeng"><source path="D:\workspace\AndroidDemo1\app\src\androidTestUmeng\res"/></dataSet><mergedItems/></merger>

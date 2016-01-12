@@ -1,0 +1,88 @@
+apply plugin: 'com.android.application'
+
+Properties keyProps = new Properties()
+keyProps.load(project.rootProject.file('keystore.properties').newDataInputStream())
+
+task copyApkTask(type: Copy) {
+    from 'build/outputs/apk'
+    into rootProject.buildDir
+    exclude '*-un*.apk'
+}
+
+task deleteApkTask(type: Delete) {
+    delete 'build/outputs/apk'
+}
+
+task doBuild(dependsOn: [assembleRelease, copyApkTask, deleteApkTask]) {
+    deleteApkTask.shouldRunAfter copyApkTask
+    copyApkTask.mustRunAfter assembleRelease
+}
+
+
+android {
+    compileSdkVersion 19
+    buildToolsVersion "23.0.2"
+
+    signingConfigs {
+        String proDir = projectDir
+        release {
+            keyAlias keyProps['keyAlias']
+            keyPassword keyProps['keyPassword']
+            storePassword keyProps['storePassword']
+            storeFile file(proDir + keyProps['storeFile'])
+        }
+        debug {
+            keyAlias keyProps['keyAlias']
+            keyPassword keyProps['keyPassword']
+            storePassword keyProps['storePassword']
+            storeFile file(proDir + keyProps['storeFile'])
+        }
+    }
+
+
+    defaultConfig {
+        applicationId "com.example.androiddemo"
+        minSdkVersion 8
+        targetSdkVersion 19
+        manifestPlaceholders = [CHANNEL_NAME: 'Unspecified']
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+            zipAlignEnabled false
+            shrinkResources false
+            signingConfig signingConfigs.debug
+        }
+        release {
+            minifyEnabled true
+            zipAlignEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+
+    productFlavors {
+        "360" {}
+        umeng1 {}
+        umeng2 {}
+        umeng3 {}
+        umeng4 {}
+        umeng5 {}
+        umeng6 {}
+        wandoujia {
+            minSdkVersion 15
+        }
+    }
+    productFlavors.all { flavor ->
+        flavor.manifestPlaceholders = [
+                UMENG_CHANNEL_VALUE: name
+        ]
+    }
+
+}
+
+dependencies {
+    compile 'com.android.support:support-v4:19.1.0'
+}

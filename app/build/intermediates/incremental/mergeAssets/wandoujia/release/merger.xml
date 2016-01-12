@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="main"><source path="D:\workspace\AndroidDemo1\app\src\main\assets"/></dataSet><dataSet config="wandoujia"><source path="D:\workspace\AndroidDemo1\app\src\wandoujia\assets"/></dataSet><dataSet config="release"><source path="D:\workspace\AndroidDemo1\app\src\release\assets"/></dataSet><dataSet config="wandoujiaRelease"><source path="D:\workspace\AndroidDemo1\app\src\wandoujiaRelease\assets"/></dataSet></merger>

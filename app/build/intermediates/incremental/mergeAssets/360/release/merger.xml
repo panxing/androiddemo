@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="main"><source path="D:\workspace\AndroidDemo1\app\src\main\assets"/></dataSet><dataSet config="360"><source path="D:\workspace\AndroidDemo1\app\src\360\assets"/></dataSet><dataSet config="release"><source path="D:\workspace\AndroidDemo1\app\src\release\assets"/></dataSet><dataSet config="360Release"><source path="D:\workspace\AndroidDemo1\app\src\360Release\assets"/></dataSet></merger>
